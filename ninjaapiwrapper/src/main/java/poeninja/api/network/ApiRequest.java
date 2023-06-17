@@ -15,7 +15,7 @@ public class ApiRequest {
     public static String get(String... strings) {
         String urlStr = "https://poe.ninja/api/data/" + strings[0] + "overview?league=Crucible&type=" + strings[1];
         String line = null;
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder();
         HttpsURLConnection conn;
         InputStream is = null;
         BufferedReader br = null;
@@ -38,7 +38,6 @@ public class ApiRequest {
                 is = conn.getErrorStream();
             }
             br = new BufferedReader(new InputStreamReader(is));
-            sb = new StringBuilder();
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
